@@ -1,0 +1,18 @@
+---
+- hosts: all
+  become: true
+  vars:
+    doc_root: /var/www/example
+  tasks:
+    - name: Enable UFW
+      ufw:
+        state: enabled
+        policy: allow
+
+    - name: Allow all access to tcp port 22
+      ufw:
+        rule: allow
+        port: 22
+        proto: tcp
+
+

@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+  vars:
+    doc_root: /var/www/example
+  tasks:
+    - name: Update apt
+      apt: update_cache=yes
+
+    - name: Install Apache
+      apt: name=apache2 state=latest
+
+    - name: restart apache
+      service: name=apache2 state=restarted
+
